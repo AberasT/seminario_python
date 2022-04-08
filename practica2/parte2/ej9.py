@@ -1,12 +1,3 @@
-import string
-
-celdas = [
-'-*-*-',
-'--*--',
-'----*',
-'*----',
-]
-
 def iniciar_mapa(matriz,alto,ancho):
     """ Los espacios en los que no hay minas, los inicia en 0, para luego comenzar el conteo de cercanía """
     for i in range(alto):
@@ -28,20 +19,10 @@ def matriz_a_string(matriz):
     mapa_minas = []
     for linea in matriz:
         mapa_minas.append(''.join(str(item) for item in linea))
-
-def calcular_minas():
-    """ """
-    alto = len(celdas)
-    ancho = len(celdas[0])
-
-    celdas_matriz = transformar_a_matriz((alto,ancho))
-    celdas_matriz = sumar_cercanias(celdas_matriz,alto,ancho)
-    celdas_numeros = matriz_a_string(celdas_matriz)
-
-    return celdas_numeros
+    return mapa_minas
 
 def sumar_cercanias(celdas,alto,ancho):
-    """"""
+    """  """
     iniciar_mapa(celdas,alto,ancho)
     for i in range(alto):
         for j in range(ancho):
@@ -74,5 +55,27 @@ def sumar_cercanias(celdas,alto,ancho):
                 if (i+1) in range(alto) and (j-1) in range(ancho):
                     if celdas[i+1][j-1] != '*':
                         celdas[i+1][j-1] += 1
+    return celdas
 
-print(calcular_minas())
+celdas = [
+'-*-*-',
+'--*--',
+'----*',
+'*----',
+]
+
+# DIMENSIONES DEL MAPA
+alto = len(celdas)
+ancho = len(celdas[0])
+
+# SE TRANSFORMA EL MAPA A UNA MATRIZ DE CARACTERES
+celdas_matriz = transformar_a_matriz(alto)
+
+# SE CALCULAN LAS SUMAS PARA LAS CELDAS ADYACENTES A LAS MINAS
+celdas_numeradas = sumar_cercanias(celdas_matriz,alto,ancho)
+
+# SE PASA DE UNA MATRIZ A UNA LISTA DE STRINGS
+celdas_numeros = matriz_a_string(celdas_numeradas)
+
+for linea in celdas_numeros:
+    print(linea)
