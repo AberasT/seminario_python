@@ -16,21 +16,22 @@ lista_eval1 = eval1.read().replace("'","").strip('\n').split(',\n')
 lista_eval2 = eval2.read().replace("'","").strip('\n').split(',\n')
 
 listado_completo = []
+
 suma = 0
 for i in range(len(lista_nombres)):
     item = (lista_nombres[i] , int(lista_eval1[i]) + int(lista_eval2[i]))
     listado_completo.append(item)
     suma += item[1]
 
+# Promedio
 promedio = suma / len(listado_completo)
 
 listado_filtrado = filter(lambda item: item[1] < promedio, listado_completo)
 
+# Informe
 for item in listado_filtrado:
     print(item)
 
 nombres.close()
 eval1.close()
 eval2.close()
-
-# FILTER??
