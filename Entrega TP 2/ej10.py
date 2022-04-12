@@ -1,10 +1,10 @@
 import os
-ruta = os.path.dirname(os.path.realpath('ej10'))
-ruta_carpeta = os.path.join(ruta, "practica2","parte2","ej10")
+ruta = os.path.dirname(os.path.abspath(__file__))
+ruta_archivos = os.path.join(ruta, "archivos")
 
-ruta_nombres = os.path.join(ruta_carpeta, 'nombres_1.txt')
-ruta_eval1 = os.path.join(ruta_carpeta, 'eval1.txt')
-ruta_eval2 = os.path.join(ruta_carpeta, 'eval2.txt')
+ruta_nombres = os.path.join(ruta_archivos, 'nombres_1.txt')
+ruta_eval1 = os.path.join(ruta_archivos, 'eval1.txt')
+ruta_eval2 = os.path.join(ruta_archivos, 'eval2.txt')
 
 nombres = open(ruta_nombres, encoding="UTF-8")
 eval1 = open(ruta_eval1, encoding="UTF-8",newline='\n')
@@ -24,12 +24,10 @@ for i in range(len(lista_nombres)):
 
 promedio = suma / len(listado_completo)
 
-for item in listado_completo:
-    if item[1] < promedio:
-        print(item[0])
+listado_filtrado = filter(lambda item: item[1] < promedio, listado_completo)
 
-print(listado_completo)
-print(promedio)
+for item in listado_filtrado:
+    print(item)
 
 nombres.close()
 eval1.close()
