@@ -34,3 +34,5 @@ print(promedio)
 nombres.close()
 eval1.close()
 eval2.close()
+
+# FILTER??
