@@ -30,3 +30,7 @@ for item in listado_completo:
 
 print(listado_completo)
 print(promedio)
+
+nombres.close()
+eval1.close()
+eval2.close()
