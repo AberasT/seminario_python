@@ -31,3 +31,8 @@ print(f'  NOMBRE         EVAL1    EVAL2        TOTAL')
 for i in range(len(lista_nombres1)):
     total = int(lista_eval1[i]) + int(lista_eval2[i])
     print(f'{i:2} {lista_nombres1[i]:15} {lista_eval1[i]:8} {lista_eval2[i]:8} {total:6}')
+
+nombres_1.close()
+nombres_2.close()
+eval1.close()
+eval2.close()
