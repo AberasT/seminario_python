@@ -35,17 +35,32 @@ archivo_nuevo.close()
 # NO SE TIENEN EN CUENTA LOS PAISES VACIOS
 archivo_netflix.seek(0)
 contador_paises = collections.Counter(x[5] for x in csvreader  if x[5] != "")
-top_paises = contador_paises.most_common(5)
-print("*"*50)
-print("Los 5 paises con mas producciones en Netflix: ")
-for pais in top_paises:
-    print(pais)
-
 archivo_netflix.close()
 
 menu = ConsoleMenu("Desafío con archivo de Netflix","Menú de opciones")
 
-item = MenuItem("Este es un item")
+def mostrar_peliculas():
+    aux_menu = ConsoleMenu("Películas agregadas Netflix en 2021")
+    texto = ""
+    for pelicula in peliculas_2021:
+        texto += pelicula[2] + "\n"
+    aux_menu.prologue_text = texto
+    aux_menu.show()
 
-menu.append_item(item)
+
+def mostrar_top_paises():
+    aux_menu = ConsoleMenu("Países con más producciones en Netflix")
+    top_paises = contador_paises.most_common(5)
+    texto = ""
+    for pais in top_paises:
+        texto += f"{pais[0]}: {pais[1]} producciones \n"
+    aux_menu.prologue_text = texto
+    aux_menu.show()
+
+item_top = FunctionItem("Listar países con más producciones en Netflix",mostrar_top_paises)
+item_pelis = FunctionItem("Listar películas agregadas en 2021",mostrar_peliculas)
+
+menu.append_item(item_top)
+menu.append_item(item_pelis)
+
 menu.show()
