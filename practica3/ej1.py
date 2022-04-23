@@ -30,3 +30,5 @@ print('*'*30)
 print(paises)
 print(len(paises))
 print('*'*30)
+
+lista_paises_tipos = set(map(lambda x,  ,paises))
