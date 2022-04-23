@@ -24,10 +24,8 @@ def paisesProductores(lista):
 def formaParte(pais,linea):
     return pais in linea[5]
 
-
-
-
 paises = paisesProductores(lista)
+
 print('*'*30)
 print(paises)
 print(len(paises))
