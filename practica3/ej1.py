@@ -13,7 +13,7 @@ encabezado = next(csvreader)
 print(encabezado)
 lista = [x for x in csvreader]
 
-def paisesProductores(lista):
+def paises_productores(lista):
     paises = set()
     for linea in lista:
         paises_show = set(linea[5].split(','))
@@ -21,14 +21,26 @@ def paisesProductores(lista):
             if pais != '': paises.add(pais)
     return paises
 
-def formaParte(pais,linea):
-    return pais in linea[5]
+def forma_parte(pais,linea):
+    return pais.lower() in linea[5].lower()
 
-paises = paisesProductores(lista)
+paises = paises_productores(lista)
+
+def tipos_show_pais(lista,pais):
+    tipos = set()
+    for linea in lista:
+        if forma_parte(pais,linea): tipos.add(linea[1])
+    return tipos
 
 print('*'*30)
+pais = 'uruguay'
+tipos_pais = tipos_show_pais(lista,pais)
+print('*'*30)
+
+print(pais)
+print(tipos_pais)
+
+print('*'*30)
+paises = list(paises)
+paises.sort()
 print(paises)
-print(len(paises))
-print('*'*30)
-
-lista_paises_tipos = set(map(lambda x,  ,paises))
